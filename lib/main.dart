@@ -9,7 +9,7 @@ import 'package:url_strategy/url_strategy.dart';
 
 void main() {
   /// Removes hash/pound (#) sign on the root URL
-  setPathUrlStrategy();
+  // setPathUrlStrategy();
   runApp(MyApp());
 }
 
