@@ -5,8 +5,11 @@ import 'package:google_fonts/google_fonts.dart';
 /// Add argumesnts--no-sound-null-safety
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:url_strategy/url_strategy.dart';
 
 void main() {
+  /// Removes hash/pound (#) sign on the root URL
+  setPathUrlStrategy();
   runApp(MyApp());
 }
 
