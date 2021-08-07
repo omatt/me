@@ -1,4 +1,7 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 /// Library has yet to support null-safety
@@ -6,8 +9,19 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_strategy/url_strategy.dart';
+import 'package:webview_flutter/webview_flutter.dart';
+import 'dart:ui' as ui;
 
 void main() {
+  // ignore: undefined_prefixed_name
+  ui.platformViewRegistry.registerViewFactory(
+      'hello-world-html',
+      (int viewId) => IFrameElement()
+        // ..width = '640'
+        // ..height = '360'
+        ..src = Constants.webUserTopLanguages
+        ..style.border = 'none');
+
   /// Removes hash/pound (#) sign on the root URL
   // setPathUrlStrategy();
   runApp(MyApp());
@@ -34,12 +48,18 @@ class MyHomePage extends StatefulWidget {
 
 class Constants {
   static const socialName = "Omatt";
-  static const description = "Software Engineer (Android, Flutter) \npassionate in opensource tech and latest computing trends.\nLikes tinkering stuff and mechanical keyboards.";
+  static const description =
+      "Software Engineer (Android, Flutter) \npassionate in opensource tech and latest computing trends.\nLikes tinkering stuff and mechanical keyboards.";
 
   static const userLinkStackOverflow =
       'https://stackoverflow.com/users/2497859/omatt';
   static const userLinkGitHub = 'https://github.com/omatt';
   static const userLinkLinkedIn = 'https://linkedin.com/in/omarmatthewreyes';
+
+  static const webUserTopLanguages =
+      'https://github-readme-stats.vercel.app/api/top-langs/?username=omatt&layout=compact&exclude_repo=LetterCounter,OOP-Concepts,SimpleJavaExercises,SampleUpButton,Palindrome,Methods,RTMP-stream-demo,PG-Tracker-App,dpshack2018';
+  static const markdownUserTopLanguages =
+      '[![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=omatt&layout=compact&exclude_repo=LetterCounter,OOP-Concepts,SimpleJavaExercises,SampleUpButton,Palindrome,Methods,RTMP-stream-demo,PG-Tracker-App,dpshack2018)](https://github.com/omatt)';
 
   static const paddingNormal = 32.0;
 }
@@ -49,7 +69,9 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -101,6 +123,11 @@ class _MyHomePageState extends State<MyHomePage> {
                 SizedBox(
                   height: Constants.paddingNormal,
                 ),
+                topLangWidget(),
+                // MarkdownBody(data: Constants.markdownUserTopLanguages),
+                SizedBox(
+                  height: Constants.paddingNormal,
+                ),
                 Container(
                   width: 150,
                   height: 1,
@@ -138,8 +165,17 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ],
             ),
+          ),
         ),
       ),
+    );
+  }
+
+  topLangWidget() {
+    return SizedBox(
+      width: 360,
+      height: 200,
+      child: HtmlElementView(viewType: 'hello-world-html'),
     );
   }
 }
