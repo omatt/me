@@ -41,6 +41,7 @@ class Constants {
   static const userLinkGitHub = 'https://github.com/omatt';
   static const userLinkLinkedIn = 'https://linkedin.com/in/omarmatthewreyes';
 
+  static const paddingSmall = 16.0;
   static const paddingNormal = 32.0;
 }
 
@@ -49,95 +50,98 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                SizedBox(
-                  height: Constants.paddingNormal,
-                ),
-                Container(
-                  width: 150,
-                  height: 150,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.white,
-                    image: DecorationImage(
-                      fit: BoxFit.fill,
-                      image: AssetImage('assets/omarmatthew.jpeg'),
+        child: Padding(
+          padding: const EdgeInsets.all(Constants.paddingSmall),
+          child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  SizedBox(
+                    height: Constants.paddingNormal,
+                  ),
+                  Container(
+                    width: 150,
+                    height: 150,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.white,
+                      image: DecorationImage(
+                        fit: BoxFit.fill,
+                        image: AssetImage('assets/omarmatthew.jpeg'),
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black12,
+                          offset: Offset(0, 4),
+                          blurRadius: 4.0,
+                        )
+                      ],
                     ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black12,
-                        offset: Offset(0, 4),
-                        blurRadius: 4.0,
-                      )
-                    ],
                   ),
-                ),
-                SizedBox(
-                  height: Constants.paddingNormal,
-                ),
-                Text(
-                  Constants.socialName,
-                  style: GoogleFonts.roboto(
-                    fontSize: 28,
-                    color: Colors.black87,
-                    fontWeight: FontWeight.bold,
+                  SizedBox(
+                    height: Constants.paddingNormal,
                   ),
-                ),
-                SizedBox(
-                  height: Constants.paddingNormal,
-                ),
-                Text(
-                  Constants.description,
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.roboto(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
-                      height: 1.5,
-                      letterSpacing: 0),
-                ),
-                SizedBox(
-                  height: Constants.paddingNormal,
-                ),
-                Container(
-                  width: 150,
-                  height: 1,
-                  color: Colors.grey[300],
-                ),
-                SizedBox(
-                  height: Constants.paddingNormal,
-                ),
-                SocialButton(
-                  url: Constants.userLinkStackOverflow,
-                  icon: MdiIcons.stackOverflow,
-                  iconColor: Colors.deepOrangeAccent,
-                  label: "Stack Overflow",
-                ),
-                const SizedBox(
-                  height: Constants.paddingNormal,
-                ),
-                SocialButton(
-                  url: Constants.userLinkGitHub,
-                  icon: MdiIcons.github,
-                  iconColor: Colors.black,
-                  label: "GitHub profile",
-                ),
-                const SizedBox(
-                  height: Constants.paddingNormal,
-                ),
-                SocialButton(
-                  url: Constants.userLinkLinkedIn,
-                  icon: MdiIcons.linkedin,
-                  iconColor: Colors.blue,
-                  label: "LinkedIn profile",
-                ),
-                SizedBox(
-                  height: Constants.paddingNormal,
-                ),
-              ],
-            ),
+                  Text(
+                    Constants.socialName,
+                    style: GoogleFonts.roboto(
+                      fontSize: 28,
+                      color: Colors.black87,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(
+                    height: Constants.paddingNormal,
+                  ),
+                  Text(
+                    Constants.description,
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.roboto(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                        height: 1.5,
+                        letterSpacing: 0),
+                  ),
+                  SizedBox(
+                    height: Constants.paddingNormal,
+                  ),
+                  Container(
+                    width: 150,
+                    height: 1,
+                    color: Colors.grey[300],
+                  ),
+                  SizedBox(
+                    height: Constants.paddingNormal,
+                  ),
+                  SocialButton(
+                    url: Constants.userLinkStackOverflow,
+                    icon: MdiIcons.stackOverflow,
+                    iconColor: Colors.deepOrangeAccent,
+                    label: "Stack Overflow",
+                  ),
+                  const SizedBox(
+                    height: Constants.paddingNormal,
+                  ),
+                  SocialButton(
+                    url: Constants.userLinkGitHub,
+                    icon: MdiIcons.github,
+                    iconColor: Colors.black,
+                    label: "GitHub profile",
+                  ),
+                  const SizedBox(
+                    height: Constants.paddingNormal,
+                  ),
+                  SocialButton(
+                    url: Constants.userLinkLinkedIn,
+                    icon: MdiIcons.linkedin,
+                    iconColor: Colors.blue,
+                    label: "LinkedIn profile",
+                  ),
+                  SizedBox(
+                    height: Constants.paddingNormal,
+                  ),
+                ],
+              ),
+          ),
         ),
       ),
     );
