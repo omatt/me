@@ -23,9 +23,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  url_launcher: ^6.0.3
-  material_design_icons_flutter: ^4.0.5955
-  google_fonts: ^2.0.0
+  url_launcher: ^6.0.13
+  material_design_icons_flutter: ^5.0.6295
+  google_fonts: ^2.1.0
   url_strategy: ^0.2.0
 
 
